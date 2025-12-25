@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dành Cho Em ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CẤU HÌNH CHUNG --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --main-bg: #FFF5F7; 
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --text-color: #7D6B7D;
+            --accent-color: #FF9E9E;
+            --accent-light: #FFD1D1;
+            --heart-color: #FF8BA0;
+            --shadow: rgba(255, 155, 155, 0.15);
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--main-bg); 
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--header-bg);
+            width: 100%;
+            position: fixed; top: 0; left: 0; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .container {
+            width: 90%; max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem; color: var(--accent-color); cursor: pointer;
+            white-space: nowrap;
+        }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a {
+            text-decoration: none; color: var(--text-color);
+            font-weight: 700; font-size: 1rem;
+            padding: 8px 15px; border-radius: 20px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color); background-color: rgba(255, 155, 155, 0.1);
+        }
+
+        /* --- SECTIONS --- */
+        main { margin-top: 70px; }
+        section {
+            padding: 60px 0; min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; position: relative; overflow: hidden;
+            background-color: transparent; 
+        }
+
+        .section-title {
+            font-family: 'Pacifico', cursive; font-size: 2.5rem;
+            color: var(--accent-color); margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            padding: 0 10px;
+            position: relative; z-index: 2; 
+        }
+
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 30px; border-radius: 25px;
+            box-shadow: 0 15px 35px var(--shadow);
+            max-width: 1000px; width: 90%;
+            backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 2; 
+        }
+
+        /* --- PHẦN 1: KỈ NIỆM --- */
+        .start-date {
+            font-size: 1.2rem; color: var(--heart-color); font-weight: bold;
+            margin-bottom: 30px; display: inline-block;
+            padding: 10px 20px; border: 2px dashed var(--accent-light); border-radius: 50px;
+            word-break: break-word;
+        }
+
+        .counter { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+        .counter-item {
+            background: #fff; padding: 15px; border-radius: 15px;
+            min-width: 100px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1 1 100px;
+        }
+        .counter-number {
+            font-size: 2.5rem; font-weight: bold; color: var(--heart-color); display: block; line-height: 1;
+        }
+        .counter-label { font-size: 0.9rem; color: #999; }
+
+        /* --- PHẦN 2: LỜI NHẮN --- */
+        .message-content {
+            font-size: 1.3rem; line-height: 1.6; min-height: 150px;
+            text-align: justify;
+        }
+        .cursor { display: inline-block; width: 2px; height: 20px; background: var(--heart-color); animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* --- PHẦN 3: KHOẢNH KHẮC --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; width: 100%;
+        }
+
+        .photo-card {
+            position: relative; border-radius: 15px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            aspect-ratio: 3/4; cursor: pointer; transition: transform 0.3s ease;
+            background: #fff; 
+        }
+        .photo-card:hover { transform: translateY(-5px); z-index: 10; }
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .photo-card:hover img { transform: scale(1.1); }
+        .photo-caption {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white; padding: 20px 10px 10px; font-size: 0.9rem; opacity: 1;
+        }
+
+        /* --- PHẦN 4: CÂU HỎI --- */
+        .question-text {
+            font-size: 1.8rem; color: var(--heart-color); margin-bottom: 40px; font-weight: bold;
+        }
+
+        .btn-group {
+            display: flex; justify-content: center; gap: 30px;
+            position: relative; height: 120px; width: 100%;
+        }
+
+        button {
+            padding: 12px 30px; font-size: 1.2rem; border: none; border-radius: 50px;
+            cursor: pointer; font-family: 'Quicksand', sans-serif; font-weight: 700;
+            transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+
+        .btn-yes { background-color: var(--accent-color); color: white; z-index: 10; }
+        .btn-no { background-color: #e0e0e0; color: #777; position: absolute; transition: all 0.1s ease; }
+
+        /* --- ANIMATIONS TIM BAY NỀN --- */
+        .heart-bg { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            pointer-events: none; 
+            z-index: 0; 
+        }
+        /* --- CHỈNH SỬA Ở ĐÂY: MÀU ĐẬM HƠN --- */
+        .heart { 
+            position: absolute; 
+            color: #ff9cac; /* Màu hồng đậm hơn trước */
+            opacity: 0.5; /* Tăng độ rõ lên 1 chút */
+            animation: fly linear forwards; 
+        }
+        @keyframes fly {
+            0% { transform: translateY(110vh) scale(1); opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; gap: 10px; }
+            .logo { font-size: 1.5rem; margin-top: 5px; }
+            nav ul { flex-wrap: wrap; justify-content: center; width: 100%; }
+            nav ul li { margin: 5px 10px; }
+            nav ul li a { font-size: 0.9rem; padding: 5px 10px; }
+            .content-box { padding: 20px 15px; width: 95%; }
+            .counter-number { font-size: 2rem; }
+            .counter-item { min-width: 80px; padding: 10px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .question-text { font-size: 1.5rem; margin-bottom: 30px; }
+            .btn-group { gap: 10px; height: 150px; }
+            button { padding: 10px 20px; font-size: 1rem; }
+            .btn-yes, .btn-no { max-width: 45%; } 
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <h1 class="logo" onclick="createBurst(event.clientX, event.clientY)">HNĐK x BTTL ❤️</h1>
+            <nav>
+                <ul>
+                    <li><a href="#memory">Kỉ niệm</a></li>
+                    <li><a href="#message">Lời nhắn</a></li>
+                    <li><a href="#moments">Khoảnh khắc</a></li>
+                    <li><a href="#question">Câu hỏi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="memory">
+            <h2 class="section-title">Hành trình bên nhau</h2>
+            <div class="content-box">
+                <div class="start-date" id="start-date-display">Ngày bắt đầu: ...</div>
+                <div class="counter">
+                    <div class="counter-item"><span class="counter-number" id="days">0</span><span class="counter-label">Ngày</span></div>
+                    <div class="counter-item"><span class="counter-number" id="hours">0</span><span class="counter-label">Giờ</span></div>
+                    <div class="counter-item"><span class="counter-number" id="minutes">0</span><span class="counter-label">Phút</span></div>
+                    <div class="counter-item"><span class="counter-number" id="seconds">0</span><span class="counter-label">Giây</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="message">
+            <h2 class="section-title">Gửi người anh yêu</h2>
+            <div class="content-box">
+                <div class="message-content">
+                    <span id="typing-text"></span><span class="cursor"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="moments">
+            <h2 class="section-title">Những khoảnh khắc đẹp</h2>
+            <div class="content-box" style="padding: 20px;">
+                <div class="gallery-grid">
+                    <div class="photo-card">
+                        <img src="1.jpg" alt="Kỷ niệm 1">
+                        <div class="photo-caption">Giờ tin học nè ❤️</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="2.jpg" alt="Kỷ niệm 2">
+                        <div class="photo-caption">Pháo hoa T2 nè 😍</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="4.jpg" alt="Kỷ niệm 3">
+                        <div class="photo-caption">Đi net vẫn đẹp ❤️</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="5.jpg" alt="Kỷ niệm 4">
+                        <div class="photo-caption">Sinh nhật em 💖</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="6.jpg" alt="Kỷ niệm 5">
+                        <div class="photo-caption">Đi ăn với cô Hà 💖</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="7.jpg" alt="Kỷ niệm 6">
+                        <div class="photo-caption">Cuối cấp nè ❤️</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="8.jpg" alt="Kỷ niệm 7">
+                        <div class="photo-caption">Bị chụp lén típ 😍</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="9.jpg" alt="Kỷ niệm 8">
+                        <div class="photo-caption">Đu trend bị la 💖</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="10.jpg" alt="Kỷ niệm 9">
+                        <div class="photo-caption">Noel nè 💖</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="question">
+            <h2 class="section-title">Một câu hỏi nhỏ...</h2>
+            <div class="content-box question-container">
+                <p class="question-text">Em có yêu anh nhiều hông? 💕</p>
+                <div class="btn-group">
+                    <button class="btn-yes" onclick="clickYes()">Có, yêu lắmm ❤️</button>
+                    <button class="btn-no" id="btn-no" onmouseover="moveButton()" onclick="moveButton()">Hông thèm 😝</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="heart-bg" id="heart-bg"></div>
+
+    <script>
+        // --- CẤU HÌNH ---
+        const config = {
+            startDate: "2023-05-20", 
+            messages: [
+                "Chào em, chào bbi, chào vợ iu ❤️",
+                "Mỗi ngày bên em là một ngày hạnh phúc.",
+                "Cảm ơn em đã đến bên anh.",
+                "Thật sự anh rất muốn được cùng với em đi đến cuối đời.",
+                "Yêu em rất nhiều! 😘"
+            ]
+        };
+
+        // 1. ĐẾM NGÀY
+        const start = new Date(config.startDate);
+        document.getElementById('start-date-display').innerText = `Ngày bắt đầu: ${start.getDate()}/${start.getMonth()+1}/${start.getFullYear()}`;
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - start;
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const m = Math.floor((diff / (1000 * 60)) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+            document.getElementById('days').innerText = d;
+            document.getElementById('hours').innerText = h;
+            document.getElementById('minutes').innerText = m;
+            document.getElementById('seconds').innerText = s;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // 2. TYPING EFFECT
+        let msgIndex = 0;
+        let charIndex = 0;
+        const typeEl = document.getElementById('typing-text');
+        
+        function typeWriter() {
+            if (msgIndex >= config.messages.length) msgIndex = 0;
+            const currentMsg = config.messages[msgIndex];
+            if (charIndex < currentMsg.length) {
+                typeEl.innerHTML += currentMsg.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                setTimeout(eraseText, 2000);
+            }
+        }
+
+        function eraseText() {
+            if (charIndex > 0) {
+                typeEl.innerHTML = config.messages[msgIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, 50);
+            } else {
+                msgIndex++;
+                typeWriter();
+            }
+        }
+        
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting && typeEl.innerHTML === "") typeWriter();
+        });
+        observer.observe(document.getElementById('message'));
+
+        // 3. NÚT CHẠY TRỐN
+        const btnNo = document.getElementById('btn-no');
+        const questionBox = document.querySelector('.question-container');
+
+        function moveButton() {
+            const containerRect = questionBox.getBoundingClientRect();
+            const btnRect = btnNo.getBoundingClientRect();
+            
+            const maxX = containerRect.width - btnRect.width - 20; 
+            const maxY = containerRect.height - btnRect.height - 20;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            btnNo.style.position = 'absolute';
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+        }
+
+        // 4. CLICK YES
+        function clickYes() {
+            const btnYes = document.querySelector('.btn-yes');
+            btnYes.innerHTML = "Anh biết mà! Yêu em ❤️";
+            createBurst(window.innerWidth / 2, window.innerHeight / 2);
+            for(let i=0; i<50; i++) setTimeout(createHeart, i * 50);
+        }
+
+        // 5. HIỆU ỨNG TIM NỀN
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            // Dùng icon tim màu trắng để dễ đổi màu bằng CSS color
+            heart.innerHTML = '❤'; 
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 30 + 15 + 'px'; 
+            // Bay chậm hơn
+            heart.style.animationDuration = Math.random() * 5 + 4 + 's'; 
+            document.getElementById('heart-bg').appendChild(heart);
+            setTimeout(() => heart.remove(), 9000);
+        }
+        setInterval(createHeart, 400);
+
+        function createBurst(x, y) {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💖';
+                heart.style.position = 'fixed';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.fontSize = '25px';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = 1001;
+                document.body.appendChild(heart);
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 150 + 50;
+                heart.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    { transform: `translate(${Math.cos(angle)*velocity}px, ${Math.sin(angle)*velocity}px) scale(0)`, opacity: 0 }
+                ], { duration: 1000 }).onfinish = () => heart.remove();
+            }
+        }
+        
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
